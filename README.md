@@ -19,7 +19,7 @@ The prompts:
 4. **Max miles** — number, or blank for any distance.
 5. **Weights (0–5)** — closeness, rating, cheapness, recency. `0` means that factor is ignored. Defaults: closeness 5, rating 3, cheapness 2, recency 1.
 
-If nothing survives the filters, you can relax them and try again.
+If no results return from the filters, you can relax them and try again.
 
 Tests:
 
@@ -130,17 +130,16 @@ Other filter calls:
 - Recency rewards **staleness**, not “went recently.”
 - If you zero every weight, equal weights — otherwise the math is a divide-by-zero shrug.
 
-## Later (fill this in)
+## Out of Scope
+- Persistence Layer
+- Group voting
 
-Ideas until you replace them:
+## Future Features
 
 - Write today’s winner back to `last_visited` so recency updates.
 - Hard-exclude “visited in the last N days” instead of only weighting recency.
 - Toggle: treat unknown price/distance as **fail** a cap instead of pass.
-- Dietary OR mode; more cuisine aliases.
 - Hours / closed today; walk vs drive; weather.
 - Random among top N when the office is split.
 - Group vote / Slack command / web UI.
 - Maps link; multiple CSV sources.
-
-Add what you actually want:
