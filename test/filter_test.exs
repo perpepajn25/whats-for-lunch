@@ -42,7 +42,11 @@ defmodule WhatsForLunch.FilterTest do
     none = spot(%{name: "Meat", dietary_options: []})
 
     assert names(Filter.apply([veg, gf, none], %{dietary: "vegan"})) == ["Veg"]
-    assert names(Filter.apply([veg, gf, none], %{dietary: ["vegetarian", "gluten-free"]})) == ["GF"]
+
+    assert names(Filter.apply([veg, gf, none], %{dietary: ["vegetarian", "gluten-free"]})) == [
+             "GF"
+           ]
+
     assert names(Filter.apply([veg, gf, none], %{dietary: " Vegetarian "})) == ["Veg", "GF"]
     assert Filter.apply([veg, gf, none], %{dietary: "none"}) == [veg, gf, none]
     assert Filter.apply([veg, gf, none], %{dietary: []}) == [veg, gf, none]

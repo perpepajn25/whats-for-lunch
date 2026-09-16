@@ -89,7 +89,9 @@ defmodule WhatsForLunch.LoaderTest do
     assert kid.last_visited == nil
   end
 
-  test "merges same name and address: union lists, max rating, later visit", %{restaurants: restaurants} do
+  test "merges same name and address: union lists, max rating, later visit", %{
+    restaurants: restaurants
+  } do
     futo = Enum.find(restaurants, &(&1.name == "Futo Buta"))
     viva_count = Enum.count(restaurants, &(&1.name == "Viva Chicken"))
 
@@ -170,6 +172,7 @@ defmodule WhatsForLunch.LoaderTest do
       """)
 
     assert length(rows) == 2
+
     assert Enum.map(rows, & &1.address) |> Enum.sort() ==
              ["2001 E 7th St", "8430 University City Blvd"]
   end

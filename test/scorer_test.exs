@@ -57,7 +57,9 @@ defmodule WhatsForLunch.ScorerTest do
     close_dud = spot(%{name: "Dud", distance_miles: 0.2, rating: 3.0})
     farther_star = spot(%{name: "Star", distance_miles: 0.5, rating: 4.9})
 
-    ranked = Scorer.rank([close_dud, farther_star], %{distance: 3, rating: 5, price: 0, recency: 0})
+    ranked =
+      Scorer.rank([close_dud, farther_star], %{distance: 3, rating: 5, price: 0, recency: 0})
+
     assert hd(ranked).restaurant.name == "Star"
   end
 
@@ -114,7 +116,12 @@ defmodule WhatsForLunch.ScorerTest do
     b = spot(%{name: "B", rating: nil, distance_miles: nil, price_level: nil, last_visited: nil})
 
     ranked = Scorer.rank([a, b], %{distance: 1, rating: 1, price: 1, recency: 1})
-    assert Enum.all?(ranked, &(&1.parts == %{distance: 0.0, rating: 0.0, price: 0.0, recency: 0.0}))
+
+    assert Enum.all?(
+             ranked,
+             &(&1.parts == %{distance: 0.0, rating: 0.0, price: 0.0, recency: 0.0})
+           )
+
     assert Enum.all?(ranked, &(&1.score == 0.0))
   end
 
@@ -142,7 +149,9 @@ defmodule WhatsForLunch.ScorerTest do
     close = spot(%{name: "Close", distance_miles: 0.1, rating: 3.0})
     far = spot(%{name: "Far", distance_miles: 9.0, rating: 5.0})
 
-    ranked = Scorer.rank([close, far], %{"distance" => 5, "rating" => 0, "price" => 0, "recency" => 0})
+    ranked =
+      Scorer.rank([close, far], %{"distance" => 5, "rating" => 0, "price" => 0, "recency" => 0})
+
     assert hd(ranked).restaurant.name == "Close"
   end
 

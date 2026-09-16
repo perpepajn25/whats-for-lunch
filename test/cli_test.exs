@@ -95,7 +95,10 @@ defmodule WhatsForLunch.CLITest do
   end
 
   test "Italian + closeness first picks the nearer Italian, not pizza" do
-    out = run(answers(%{cuisine: "Italian", closeness: "5", rating: "2", cheapness: "0", recency: "0"}))
+    out =
+      run(
+        answers(%{cuisine: "Italian", closeness: "5", rating: "2", cheapness: "0", recency: "0"})
+      )
 
     assert out =~ "TODAY'S WINNER: Mama Ricotta's"
     assert out =~ "Portofino's"

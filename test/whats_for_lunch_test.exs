@@ -13,9 +13,14 @@ defmodule WhatsForLunchTest do
   end
 
   test "pick filters first, then ranks only the survivors" do
-    near_italian = spot(%{name: "Near Pasta", cuisines: ["Italian"], distance_miles: 1.0, rating: 4.0})
-    far_italian = spot(%{name: "Far Pasta", cuisines: ["Italian"], distance_miles: 5.0, rating: 4.0})
-    nearer_mexican = spot(%{name: "Tacos", cuisines: ["Mexican"], distance_miles: 0.1, rating: 4.0})
+    near_italian =
+      spot(%{name: "Near Pasta", cuisines: ["Italian"], distance_miles: 1.0, rating: 4.0})
+
+    far_italian =
+      spot(%{name: "Far Pasta", cuisines: ["Italian"], distance_miles: 5.0, rating: 4.0})
+
+    nearer_mexican =
+      spot(%{name: "Tacos", cuisines: ["Mexican"], distance_miles: 0.1, rating: 4.0})
 
     weights = %{distance: 5, rating: 0, price: 0, recency: 0}
     criteria = %{cuisine: "italian"}
